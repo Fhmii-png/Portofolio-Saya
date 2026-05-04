@@ -1,0 +1,558 @@
+/* ============================================
+   VARIABEL DAN PENGATURAN DASAR
+   ============================================ */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --warna-utama: #79D1C3;
+    --warna-aksen: #ff0000;
+    --warna-gelap: #111111;
+    --warna-terang: #ffffff;
+    --warna-abu: #f5f5f5;
+    --warna-abu-teks: #666666;
+    --warna-kartu-bg: #f9f9f9;
+    --bayangan: 0 4px 24px rgba(0,0,0,0.08);
+    --bayangan-hover: 0 8px 40px rgba(121,209,195,0.2);
+    --transisi: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --jari-jari: 16px;
+    --jari-jari-besar: 32px;
+    --font-judul: 'Montserrat', sans-serif;
+    --font-teks: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-teks);
+    background-color: var(--warna-terang);
+    color: var(--warna-gelap);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   NAVIGASI / HEADER
+   ============================================ */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(121, 209, 195, 0.2);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: var(--font-judul);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--warna-gelap) !important;
+    text-decoration: none;
+    transition: var(--transisi);
+}
+
+.logo:hover {
+    color: var(--warna-utama) !important;
+}
+
+/* Navigasi samping (sidebar) */
+.sidebar ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.sidebar ul li a {
+    font-family: var(--font-teks);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--warna-gelap);
+    text-decoration: none;
+    padding: 0.4rem 0;
+    position: relative;
+    transition: var(--transisi);
+}
+
+.sidebar ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--warna-utama);
+    transition: var(--transisi);
+}
+
+.sidebar ul li a:hover {
+    color: var(--warna-utama);
+}
+
+.sidebar ul li a:hover::after {
+    width: 100%;
+}
+
+/* Tombol hamburger (mobile) */
+.toggler-navbar {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--warna-gelap);
+    border-radius: 4px;
+    transition: var(--transisi);
+}
+
+/* ============================================
+   SEKSI UTAMA / HERO
+   ============================================ */
+.mastHead {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem 5% 4rem;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mastHead .box.text {
+    flex: 1;
+}
+
+.textTitle {
+    font-family: var(--font-judul);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+    color: var(--warna-gelap);
+}
+
+.textTitle span {
+    color: var(--warna-aksen) !important;
+}
+
+.textDesc {
+    font-size: 1rem;
+    color: var(--warna-abu-teks);
+    margin-bottom: 2rem;
+    max-width: 480px;
+}
+
+/* Ikon Media Sosial */
+.boxIcon {
+    margin-top: 1.5rem;
+}
+
+.mediasosial-icon {
+    display: flex;
+    gap: 1rem;
+}
+
+.mediasosial-icon a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--warna-abu);
+    border-radius: 50%;
+    color: var(--warna-gelap);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: var(--transisi);
+    border: 1.5px solid transparent;
+}
+
+.mediasosial-icon a:hover {
+    background: var(--warna-utama);
+    color: var(--warna-terang);
+    border-color: var(--warna-utama);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(121, 209, 195, 0.4);
+}
+
+/* Gambar hero */
+.mastHead .box.image {
+    flex-shrink: 0;
+}
+
+.mastHead .box.image img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--warna-utama);
+    box-shadow: 0 12px 40px rgba(121, 209, 195, 0.35);
+    transition: var(--transisi);
+}
+
+.mastHead .box.image img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 60px rgba(121, 209, 195, 0.45);
+}
+
+/* ============================================
+   SEKSI LAYANAN
+   ============================================ */
+.services {
+    padding: 5rem 5%;
+    background: var(--warna-abu);
+}
+
+.services .headTitle,
+.my-portfolio .headTitle,
+.about .headTitle {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.headTitle h1 {
+    font-family: var(--font-judul);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700;
+}
+
+.box-services {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.box-services .box.desc {
+    flex: 1;
+}
+
+.box-services .box.card {
+    flex: 2;
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* Kartu layanan */
+.card-item {
+    flex: 1;
+    background: var(--warna-terang);
+    border-radius: var(--jari-jari);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: var(--bayangan);
+    transition: var(--transisi);
+    border: 1.5px solid transparent;
+}
+
+.card-item:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--bayangan-hover);
+    border-color: var(--warna-utama);
+}
+
+.card-item h5 {
+    font-family: var(--font-judul);
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem;
+    color: var(--warna-gelap);
+}
+
+.card-item p {
+    font-size: 0.875rem;
+    color: var(--warna-abu-teks);
+    line-height: 1.6;
+}
+
+/* Kotak ikon layanan */
+.square1, .square2 {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.4rem;
+    transition: var(--transisi);
+}
+
+.square1 {
+    background: linear-gradient(135deg, #e0f7f4, #79D1C3);
+    color: #0F6E56;
+}
+
+.square2 {
+    background: linear-gradient(135deg, #ffecd2, #ffb347);
+    color: #7a4700;
+}
+
+.card-item:hover .square1,
+.card-item:hover .square2 {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+/* ============================================
+   SEKSI PORTOFOLIO
+   ============================================ */
+.my-portfolio {
+    padding: 5rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.box-portfolio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.box-item {
+    background: var(--warna-kartu-bg);
+    border-radius: var(--jari-jari);
+    min-height: 200px;
+    border: 1.5px dashed #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 0.875rem;
+    transition: var(--transisi);
+}
+
+.box-item:hover {
+    border-color: var(--warna-utama);
+    color: var(--warna-utama);
+}
+
+.box-item::before {
+    content: 'Proyek segera hadir...';
+}
+
+/* ============================================
+   SEKSI TENTANG SAYA
+   ============================================ */
+.about {
+    padding: 5rem 5%;
+    background: var(--warna-abu);
+}
+
+.about-card {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--warna-terang);
+    border-radius: var(--jari-jari-besar);
+    padding: 2.5rem;
+    box-shadow: var(--bayangan);
+    border: 1.5px solid rgba(121, 209, 195, 0.2);
+}
+
+.about-image img {
+    width: 180px;
+    height: 180px;
+    border-radius: var(--jari-jari);
+    object-fit: cover;
+    border: 3px solid var(--warna-utama);
+    box-shadow: 0 8px 24px rgba(121, 209, 195, 0.3);
+}
+
+.about-desc {
+    flex: 1;
+}
+
+.about-desc ul {
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.about-desc ul li {
+    font-size: 0.95rem;
+    color: var(--warna-abu-teks);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.about-desc ul li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--warna-utama);
+    flex-shrink: 0;
+}
+
+/* Tombol unduh CV */
+.cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--warna-utama);
+    color: var(--warna-terang);
+    text-decoration: none;
+    padding: 0.65rem 1.4rem;
+    border-radius: 100px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: var(--font-judul);
+    letter-spacing: 0.02em;
+    transition: var(--transisi);
+    border: 2px solid var(--warna-utama);
+}
+
+.cv:hover {
+    background: transparent;
+    color: var(--warna-utama);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(121, 209, 195, 0.35);
+}
+
+/* ============================================
+   ANIMASI REVEAL (MUNCUL SAAT SCROLL)
+   ============================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.aktif {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background: var(--warna-gelap);
+    padding: 2rem 5%;
+}
+
+.footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+/* ============================================
+   RESPONSIF (LAYAR LEBIH KECIL)
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .mastHead {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding-top: 6rem;
+        gap: 2.5rem;
+    }
+
+    .textDesc {
+        margin: 0 auto 2rem;
+    }
+
+    .mediasosial-icon {
+        justify-content: center;
+    }
+
+    .box-services {
+        flex-direction: column;
+    }
+
+    .box-services .box.card {
+        width: 100%;
+    }
+
+    .about-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-desc ul li {
+        justify-content: center;
+    }
+}
+
+/* Ponsel */
+@media (max-width: 600px) {
+    .toggler-navbar {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.97);
+        padding: 1.5rem 5%;
+        box-shadow: var(--bayangan);
+    }
+
+    .sidebar.terbuka {
+        display: block;
+    }
+
+    .sidebar ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .mastHead .box.image img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .box-services .box.card {
+        flex-direction: column;
+    }
+
+    .navTitle {
+        flex: 1;
+        text-align: center;
+    }
+}
